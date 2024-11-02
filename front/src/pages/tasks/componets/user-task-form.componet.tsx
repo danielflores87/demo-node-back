@@ -41,17 +41,18 @@ function UserTaskFormComponent(props: {
 
   // Effect que carga los datos a editar
   useEffect(() => {
-    if (props.id)
+    if (props.id && userList.length > 0)
       getUserTaskById(props.id).then((res) => {
         if (res.operation.code == EResponseCodes.OK)
-          
           form.reset({
-            dateOfExecution: String(res.data.dateOfExecution).split("T")[0] as any,
+            dateOfExecution: String(res.data.dateOfExecution).split(
+              "T"
+            )[0] as any,
             userId: res.data.userId,
             description: res.data.description,
           });
       });
-  }, [props.id]);
+  }, [props.id, userList]);
 
   // Effect que carga los listados
   useEffect(() => {
@@ -85,11 +86,7 @@ function UserTaskFormComponent(props: {
     setLoading(false);
   });
 
-  if (
-    props.type === "Edit" &&
-    !form.getValues("userId") &&
-    userList.length == 0
-  ) {
+  if (props.type === "Edit" && !form.getValues("userId")) {
     <h3>Cargando datos ...</h3>;
   }
 
