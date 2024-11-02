@@ -1,34 +1,29 @@
-version: "3"
+version: '3'
 services:
-  # Node auth
   auth:
     build:
       context: ./api-auth
     container_name: api-auth
     ports:
-      - "3000:3000"
+      - '3000:3000'
     environment:
       NODE_ENV: production
-
-    # Node task
-    task:
-      build:
-        context: ./api-task
-      container_name: api-task
-      ports:
-        - "3001:3001"
-      environment:
-        NODE_ENV: production
-
-  # React
+  task:
+    build:
+      context: ./api-task
+    container_name: api-task
+    ports:
+      - '3001:3001'
+    environment:
+      NODE_ENV: production
   web:
     build:
       context: ./front
     container_name: front
     ports:
-      - "80:80"
+      - '80:80'
     volumes:
-      - ./front:/app
+      - './front:/app'
     depends_on:
       - auth
       - task

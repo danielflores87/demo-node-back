@@ -3,7 +3,6 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { ImHome } from "react-icons/im";
 import { AppContext } from "../app.context";
 import { ButtonComponent } from "./button.component";
-import { SiNginx } from "react-icons/si";
 import { CiLogin } from "react-icons/ci";
 
 export function HeaderComponent() {
