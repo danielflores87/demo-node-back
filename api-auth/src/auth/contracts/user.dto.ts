@@ -18,6 +18,9 @@ export class CreateUserDto {
 
   @IsString()
   email: string;
+
+  @IsString()
+  password: string;
 }
 
 export class UserLoginDto {
@@ -36,7 +39,7 @@ export class UserFilterDto {
   @IsString()
   @IsOptional()
   name?: string;
-  
+
   @IsInt()
   page: number;
 

@@ -18,6 +18,7 @@ const formShema = yup.object({
   numberDocument: yup.number().required("Valor requerido."),
   name: yup.string().max(50).required("Valor requerido."),
   email: yup.string().email().max(50).required("Valor requerido."),
+  password: yup.string().min(8).max(16).required("Valor requerido."),
 });
 
 function UsersFormComponent(): React.ReactElement {
@@ -79,6 +80,15 @@ function UsersFormComponent(): React.ReactElement {
               typeInput={"text"}
               register={form.register}
               label={"Correo Electronico *"}
+              disabled={loading}
+              errors={form.formState.errors}
+            />
+
+            <FormComponent.Input
+              idInput={"password"}
+              typeInput={"text"}
+              register={form.register}
+              label={"Contraseña *"}
               disabled={loading}
               errors={form.formState.errors}
             />

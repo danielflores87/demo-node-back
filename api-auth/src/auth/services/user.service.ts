@@ -16,7 +16,7 @@ export class UserService {
 
   async createUser(userData: CreateUserDto): Promise<ApiResponse<User>> {
     const encryptPassword = await bcrypt.hash(
-      String(userData.numberDocument),
+      String(userData.password),
       10,
     );
 
