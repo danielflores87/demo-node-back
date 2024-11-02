@@ -44,8 +44,9 @@ function UserTaskFormComponent(props: {
     if (props.id)
       getUserTaskById(props.id).then((res) => {
         if (res.operation.code == EResponseCodes.OK)
+          
           form.reset({
-            dateOfExecution: res.data.dateOfExecution,
+            dateOfExecution: String(res.data.dateOfExecution).split("T")[0] as any,
             userId: res.data.userId,
             description: res.data.description,
           });
